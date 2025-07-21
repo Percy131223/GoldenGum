@@ -19,13 +19,14 @@
       background-color: #fff;
       color: #333;
     }
+
     /* Navegación fija */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       background: #fff;
-      padding: 20px 40px;
+      padding: 10px 40px; /* Reducido para hacerlo más delgado */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -34,7 +35,7 @@
     }
     header img.logo {
       width: 200px;
-      height: 60px;
+      height: 40px; /* Reducido para ajustar al nuevo tamaño del header */
     }
     nav a {
       margin-left: 20px;
@@ -46,33 +47,46 @@
     nav a:hover {
       color: #00a859;
     }
+
     /* Hero Section */
     .hero {
       position: relative;
-      height: 100vh;
+      height: calc(100vh - 60px); /* Ajusta la altura para evitar que el header tape el contenido */
       overflow: hidden;
-    }
-    .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    .slide-container {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .slide {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
     }
     .slide.active {
       opacity: 1;
     }
     .slide img {
-      max-width: 60%;
+      max-width: 100%;
       height: auto;
+      margin-bottom: 20px;
     }
     .slide h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin: 20px 0;
     }
     .slide p {
@@ -114,6 +128,23 @@
     }
     .arrow:hover {
       background: rgba(0,0,0,0.6);
+    }
+    .dot-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .dot-indicators span {
+      width: 12px;
+      height: 12px;
+      background: #ccc;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot-indicators span.active {
+      background: #00a859;
     }
     /* Descripción */
     .descripcion {
@@ -393,97 +424,106 @@
     .fade-in {
       animation: fadeIn 1s ease-in;
     }
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    align-items: center;
-    display: none;
-    padding: 20px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  .nav-links.active {
-    display: flex;
-    flex-direction: column;
-    animation: fadeIn 0.3s ease-in;
-  }
-
-  .nav-links a {
-    margin: 10px 0;
-    font-size: 1.1rem;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        animation: fadeIn 0.3s ease-in;
+      }
+      .nav-links a {
+        margin: 10px 0;
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 <body>
-<!-- Barra de navegación -->
-<header>
-  <img src="logo.png" alt="Logo Golden Gum" class="logo"/>
-  <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
-  <nav class="nav-links">
-    <a href="Inicio.html">Inicio</a>
-    <a href="quienessomos.html">¿Quiénes somos?</a>
-    <a href="porquesomosdiferentes.html">¿Por qué somos diferentes?</a>
-    <a href="dondeconseguirnos.html">Dónde Conseguirnos</a>
-    <a href="nuestroproposito.html">Nuestro Propósito</a>
-    <a href="productos.html">Productos</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-</header>
+  <!-- Barra de navegación -->
+  <header>
+    <img src="logo.png" alt="Logo Golden Gum" class="logo"/>
+    <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+    <nav class="nav-links">
+      <a href="Inicio.html">Inicio</a>
+      <a href="quienessomos.html">¿Quiénes somos?</a>
+      <a href="porquesomosdiferentes.html">¿Por qué somos diferentes?</a>
+      <a href="dondeconseguirnos.html">Dónde Conseguirnos</a>
+      <a href="nuestroproposito.html">Nuestro Propósito</a>
+      <a href="productos.html">Productos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
   <!-- Hero Section -->
   <section class="hero" id="inicio">
-    <div class="slide active">
-      <img src="stick.png" alt="Golden Sticks" />
-      <h1>Cinco barras de sabor intenso en un envoltorio 100% biodegradable. Ideal para quienes buscan frescura duradera sin contaminar el planeta.</h1>
-      <p>Dura más. Contamina cero.</p>
-      <a href="productos.html" class="btn">Ver más</a>
+    <div class="slide-container">
+      <div class="slide active">
+        <img src="stick.png" alt="Golden Sticks" />
+        <div>
+          <h1>Cinco barras de sabor intenso en un envoltorio 100% biodegradable. Ideal para quienes buscan frescura duradera sin contaminar el planeta.</h1>
+          <p>Dura más. Contamina cero.</p>
+          <a href="productos.html" class="btn">Ver más</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="popz.png" alt="Golden Popz" />
+        <div>
+          <h1>Bolitas explosivas de sabor en un empaque plastificado biodegradable. Perfectas para llevar en el bolsillo y compartir con estilo.</h1>
+          <p>Pequeño tamaño, sabor que revienta.</p>
+          <a href="productos.html" class="btn">Ver más</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="snap.png" alt="Golden Snap" />
+        <div>
+          <h1>Chicles rectangulares individuales envueltos en papel ecológico. Diseño clásico con un giro responsable.</h1>
+          <p>Un clic, un sabor, una elección consciente</p>
+          <a href="productos.html" class="btn">Ver más</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="duomint.png" alt="Golden DuoMint" />
+        <div>
+          <h1>Pastillas dobles en caja biodegradable, combinan la frescura de la menta con frutas deliciosas. El balance perfecto entre sabor y frescura.</h1>
+          <p>La fusión que refresca y cuida el planeta.</p>
+          <a href="productos.html" class="btn">Ver más</a>
+        </div>
+      </div>
+      <div class="nav-arrows">
+        <span class="arrow" onclick="prevSlide()">&#10094;</span>
+        <span class="arrow" onclick="nextSlide()">&#10095;</span>
+      </div>
     </div>
-    <div class="slide">
-      <img src="popz.png" alt="Golden Popz" />
-      <h1>Bolitas explosivas de sabor en un empaque plastificado biodegradable. Perfectas para llevar en el bolsillo y compartir con estilo.</h1>
-      <p>Pequeño tamaño, sabor que revienta.</p>
-      <a href="productos.html" class="btn">Ver más</a>
-    </div>
-    <div class="slide">
-      <img src="snap.png" alt="Golden Snap" />
-      <h1>Chicles rectangulares individuales envueltos en papel ecológico. Diseño clásico con un giro responsable.</h1>
-      <p>Un clic, un sabor, una elección consciente</p>
-      <a href="productos.html" class="btn">Ver más</a>
-    </div>
-    <div class="slide">
-      <img src="duomint.png" alt="Golden DuoMint" />
-      <h1>Pastillas dobles en caja biodegradable, combinan la frescura de la menta con frutas deliciosas. El balance perfecto entre sabor y frescura.</h1>
-      <p>La fusión que refresca y cuida el planeta.</p>
-      <a href="productos.html" class="btn">Ver más</a>
-    </div>
-    <div class="nav-arrows">
-      <span class="arrow" onclick="prevSlide()">&#10094;</span>
-      <span class="arrow" onclick="nextSlide()">&#10095;</span>
+    <div class="dot-indicators">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </section>
+
   <!-- Descripción -->
   <section class="descripcion" id="descripcion">
     <div class="content">
@@ -492,6 +532,7 @@
       <a href="quienessomos.html" class="btn">Ver más</a>
     </div>
   </section>
+
   <!-- ¿Por qué somos diferentes? -->
   <section class="diferentes" id="diferentes">
     <div class="grid">
@@ -513,6 +554,7 @@
       </div>
     </div>
   </section>
+
   <!-- Testimonios -->
   <section class="testimonios" id="testimonios">
     <div class="slider" id="testimonialSlider">
@@ -533,12 +575,14 @@
       </div>
     </div>
   </section>
+
   <!-- Dónde conseguirnos -->
   <section class="donde" id="donde">
     <h2>¡Encuéntranos cerca de ti!</h2>
     <p>Distribuimos a cada rincón del país.</p>
     <a href="dondeconseguirnos.html" class="btn">Ver más</a>
   </section>
+
   <!-- Nuestro propósito -->
   <section class="proposito" id="proposito">
     <div class="content">
@@ -547,6 +591,7 @@
       <a href="nuestroproposito.html" class="btn">Ver más</a>
     </div>
   </section>
+
   <!-- Productos -->
   <section class="productos" id="productos">
     <div class="grid">
@@ -596,6 +641,7 @@
       </div>
     </div>
   </section>
+
   <!-- Contacto -->
   <section class="contacto" id="contacto">
     <form>
@@ -605,6 +651,7 @@
       <button type="submit">Enviar</button>
     </form>
   </section>
+
   <!-- Footer -->
   <footer>
     <img src="logo1.png" alt="Logo Footer" class="logo"/>
@@ -614,16 +661,19 @@
     </p>
     <div class="social">
       <a href="https://www.instagram.com/goldengum.oficial?igsh=MTZvYXh1MnBsYzB5dA=="><img src="ig.png" alt="Instagram"/></a>
-      <a href="https://www.tiktok.com/@golden.gum.oficia?_t=ZM-8yCVuVWsXFY&_r=1"><img src="tiktok.png" alt="TikTok"/></a>
-      <a href="https://wa.me/51987743820 "><img src="whatsapp.png" alt="WhatsApp"/></a>
+      <a href=" https://www.tiktok.com/ @golden.gum.oficia?_t=ZM-8yCVuVWsXFY&_r=1"><img src="tiktok.png" alt="TikTok"/></a>
+      <a href="https://wa.me/51987743820  "><img src="whatsapp.png" alt="WhatsApp"/></a>
     </div>
     <p>&copy; 2025 Golden Gum. Todos los derechos reservados.</p>
   </footer>
+
   <!-- Scripts -->
   <script>
-    // Carrusel Hero - 5 segundos
+    // Carrusel Hero - 4 segundos
     let currentSlide = 0;
     const slides = document.querySelectorAll('.hero .slide');
+    const dotIndicators = document.querySelectorAll('.dot-indicators span');
+
     function showSlide(index) {
       slides.forEach((slide, i) => {
         slide.classList.remove('active');
@@ -631,57 +681,40 @@
           slide.classList.add('active');
         }
       });
+      dotIndicators.forEach((dot, i) => {
+        dot.classList.remove('active');
+        if (i === index) {
+          dot.classList.add('active');
+        }
+      });
     }
+
     function nextSlide() {
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
     }
+
     function prevSlide() {
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
       showSlide(currentSlide);
     }
-    setInterval(nextSlide, 5000);
 
-    // Carrusel Testimonios - 5 segundos, sin pausa
-    let testimonialIndex = 0;
-    const testimonials = document.querySelectorAll('.testimonial');
-    function showTestimonial(index) {
-      testimonials.forEach((t, i) => {
-        t.style.transform = `translateX(${100 * (i - index)}%)`;
-      });
-    }
-    function nextTestimonial() {
-      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-      showTestimonial(testimonialIndex);
-    }
-    setInterval(nextTestimonial, 5000);
+    setInterval(nextSlide, 4000);
 
-    // Parallax: ¿Por qué somos diferentes?
-    const items = document.querySelectorAll('.diferentes .item');
-    window.addEventListener('scroll', () => {
-      const triggerBottom = window.innerHeight / 5 * 4;
-      items.forEach(item => {
-        const boxTop = item.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) {
-          item.classList.add('active');
-        }
-      });
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
 
-  // Menú móvil
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  // Cerrar menú al hacer click en un enlace
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
