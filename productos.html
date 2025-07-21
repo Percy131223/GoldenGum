@@ -19,25 +19,27 @@
       background-color: #fff;
       color: #333;
     }
+
     /* Navegación fija */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       background: #fff;
-      padding: 20px 40px;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
     }
     header img.logo {
-      width: 200px;
-      height: 60px;
+      width: 150px;
+      height: auto;
     }
     nav a {
-      margin-left: 20px;
+      margin-left: 15px;
       text-decoration: none;
       color: #333;
       font-weight: 500;
@@ -47,9 +49,69 @@
       color: #00a859;
     }
 
+    /* Menú móvil */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 15px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        animation: slideDown 0.3s ease forwards;
+        opacity: 0;
+        transform: translateY(-10px);
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+      }
+      .nav-links.active {
+        display: flex;
+        animation-play-state: running;
+      }
+      .nav-links a {
+        margin: 10px 0;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+        transition: background 0.3s;
+      }
+      .nav-links a:hover {
+        background: #f0f0f0;
+        padding: 6px 0;
+        border-radius: 4px;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Sección de productos */
     .productos {
-      padding: 120px 20px 60px;
+      padding: 100px 20px 60px; /* Ajuste para no tapar por header fijo */
       background: #fff;
     }
     .productos h2 {
@@ -105,35 +167,37 @@
       text-align: center;
     }
     footer img.logo {
-      width: 120px;
-      height: 40px;
-      margin-bottom: 15px;
+      width: 100px;
+      height: auto;
+      margin-bottom: 12px;
     }
     footer a {
       color: #ccc;
       text-decoration: none;
-      margin: 0 10px;
+      margin: 0 8px;
       transition: color 0.3s;
     }
     footer a:hover {
       color: #00a859;
     }
     footer .social {
-      margin: 15px 0;
+      margin: 12px 0;
     }
     footer .social img {
-      width: 24px;
-      height: 24px;
-      margin: 0 8px;
+      width: 20px;
+      height: 20px;
+      margin: 0 6px;
       vertical-align: middle;
     }
   </style>
 </head>
 <body>
+
   <!-- Barra de navegación -->
   <header>
     <img src="logo.png" alt="Logo Golden Gum" class="logo"/>
-    <nav>
+    <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+    <nav class="nav-links">
       <a href="Inicio.html">Inicio</a>
       <a href="quienessomos.html">¿Quiénes somos?</a>
       <a href="porquesomosdiferentes.html">¿Por qué somos diferentes?</a>
@@ -217,10 +281,36 @@
     </p>
     <div class="social">
       <a href="https://www.instagram.com/goldengum.oficial?igsh=MTZvYXh1MnBsYzB5dA=="><img src="ig.png" alt="Instagram"/></a>
-      <a href="https://www.tiktok.com/@golden.gum.oficia?_t=ZM-8yCVuVWsXFY&_r=1"><img src="tiktok.png" alt="TikTok"/></a>
+      <a href=" https://www.tiktok.com/ @golden.gum.oficia?_t=ZM-8yCVuVWsXFY&_r=1"><img src="tiktok.png" alt="TikTok"/></a>
       <a href="https://wa.me/51987743820 "><img src="whatsapp.png" alt="WhatsApp"/></a>
     </div>
     <p>&copy; 2025 Golden Gum. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Cerrar menú al hacer scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navLinks.classList.remove('active');
+      }
+    });
+  </script>
+
 </body>
 </html>
