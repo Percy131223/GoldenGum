@@ -26,26 +26,85 @@
       top: 0;
       width: 100%;
       background: #fff;
-      padding: 20px 40px;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
     }
     header img.logo {
-      width: 200px;
-      height: 60px;
+      width: 150px;
+      height: auto;
     }
-    nav a {
-      margin-left: 20px;
+
+    /* Estilos para navegación en escritorio */
+    nav.nav-links {
+      display: flex;
+      align-items: center;
+    }
+    nav.nav-links a {
+      margin-left: 15px;
       text-decoration: none;
       color: #333;
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover {
+    nav.nav-links a:hover {
       color: #00a859;
+    }
+
+    /* Botón del menú hamburguesa */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Responsive para móviles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav.nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 15px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      nav.nav-links.active {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      nav.nav-links a {
+        margin: 10px 0;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+        transition: background 0.3s;
+      }
+      nav.nav-links a:hover {
+        background: #f0f0f0;
+        border-radius: 4px;
+      }
     }
 
     /* Sección principal */
@@ -113,8 +172,14 @@
 <body>
   <!-- Barra de navegación -->
   <header>
-    <img src="logo.png" alt="Logo Golden Gum" class="logo"/>
-    <nav>
+    <!-- Logo -->
+    <img src="logo.png" alt="Logo Golden Gum" class="logo" />
+
+    <!-- Botón del menú hamburguesa -->
+    <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+
+    <!-- Navegación -->
+    <nav class="nav-links">
       <a href="Inicio.html">Inicio</a>
       <a href="quienessomos.html">¿Quiénes somos?</a>
       <a href="porquesomosdiferentes.html">¿Por qué somos diferentes?</a>
@@ -146,10 +211,35 @@
     </p>
     <div class="social">
       <a href="https://www.instagram.com/goldengum.oficial?igsh=MTZvYXh1MnBsYzB5dA=="><img src="ig.png" alt="Instagram"/></a>
-      <a href="https://www.tiktok.com/@golden.gum.oficia?_t=ZM-8yCVuVWsXFY&_r=1"><img src="tiktok.png" alt="TikTok"/></a>
+      <a href=" https://www.tiktok.com/ @golden.gum.oficia?_t=ZM-8yCVuVWsXFY&_r=1"><img src="tiktok.png" alt="TikTok"/></a>
       <a href="https://wa.me/51987743820 "><img src="whatsapp.png" alt="WhatsApp"/></a>
     </div>
     <p>&copy; 2025 Golden Gum. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- JavaScript para funcionalidad del menú -->
+  <script>
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Cerrar menú al hacer scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navLinks.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
