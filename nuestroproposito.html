@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuestro Propósito - Golden Gum</title>
+  <style>
+    /* Reset y base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* Navegación fija */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    header img.logo {
+      width: 200px;
+      height: 60px;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00a859;
+    }
+
+    /* Banner de propósito */
+    .banner-proposito {
+      background: url('ecologico.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px 80px;
+      position: relative;
+    }
+    .banner-proposito::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+    .banner-proposito .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .banner-proposito h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .banner-proposito p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+    }
+
+    /* Sección de detalles */
+    .detalles {
+      padding: 60px 20px;
+      background: #fff;
+    }
+    .detalles .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .detalle {
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      flex: 1 1 300px;
+      min-width: 280px;
+      text-align: center;
+    }
+    .detalle h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #00a859;
+    }
+    .detalle p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Llamado a la acción */
+    .cta {
+      background: #00a859;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 40px;
+    }
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .cta p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+    .cta .btn {
+      background: white;
+      color: #00a859;
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
+    .cta .btn:hover {
+      background: #007f45;
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #ccc;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    footer img.logo {
+      width: 120px;
+      height: 40px;
+      margin-bottom: 15px;
+    }
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #00a859;
+    }
+    footer .social {
+      margin: 15px 0;
+    }
+    footer .social img {
+      width: 24px;
+      height: 24px;
+      margin: 0 8px;
+      vertical-align: middle;
+    }
+    footer .legal {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+    footer .legal a {
+      margin: 0 5px;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <header>
+    <img src="logo.png" alt="Logo Golden Gum" class="logo"/>
+    <nav>
+      <a href="Inicio.html">Inicio</a>
+      <a href="quienessomos.html">¿Quiénes somos?</a>
+      <a href="porquesomosdiferentes.html">¿Por qué somos diferentes?</a>
+      <a href="dondeconseguirnos.html">Dónde Conseguirnos</a>
+      <a href="nuestroproposito.html">Nuestro Propósito</a>
+      <a href="productos.html">Productos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Banner de propósito -->
+  <section class="banner-proposito">
+    <div class="content">
+      <h1>Construimos un futuro más limpio</h1>
+      <p>Cada chicle que consumes con Golden Gum es un paso hacia un planeta más limpio. Creemos en la innovación responsable y en el poder de pequeñas acciones que generan un gran impacto positivo.</p>
+    </div>
+  </section>
+
+  <!-- Sección de detalles -->
+  <section class="detalles">
+    <div class="grid">
+      <div class="detalle">
+        <h2>Misión</h2>
+        <p>Ofrecer soluciones innovadoras y personalizadas que impulsen el crecimiento sostenible de nuestros clientes, mientras reducimos el impacto ambiental del consumo de chicles tradicionales.</p>
+      </div>
+      <div class="detalle">
+        <h2>Visión</h2>
+        <p>Ser reconocidos como líderes en productos sostenibles en Perú y expandir nuestra visión ecológica a toda América Latina, demostrando que se puede innovar sin comprometer el planeta.</p>
+      </div>
+      <div class="detalle">
+        <h2>Valores</h2>
+        <p>Estamos guiados por el respeto al medio ambiente, la responsabilidad social, la innovación constante y la transparencia en cada uno de nuestros procesos, desde la producción hasta la experiencia del cliente.</p>
+      </div>
+      <div class="detalle">
+        <h2>Impacto</h2>
+        <p>Cada envoltorio y producto está pensado para minimizar residuos. Hemos evitado más de 1 tonelada de plástico en el último año. Con tu apoyo, seguiremos creciendo con conciencia ambiental.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Llamado a la acción -->
+  <section class="cta">
+    <h2>Únete a nuestra misión</h2>
+    <p>El cambio comienza con decisiones conscientes. Elige Golden Gum y haz parte de una comunidad que cuida el planeta.</p>
+    <a href="contacto.html" class="btn">Contáctanos</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <img src="logo1.png" alt="Logo Footer" class="logo"/>
+    <p>
+      <a href="#">Términos y condiciones</a> |
+      <a href="#">Políticas de privacidad</a>
+    </p>
+    <div class="social">
+      <a href="https://www.instagram.com/goldengum.oficial?igsh=MTZvYXh1MnBsYzB5dA=="><img src="ig.png" alt="Instagram"/></a>
+      <a href="https://www.tiktok.com/@golden.gum.oficia?_t=ZM-8yCVuVWsXFY&_r=1"><img src="tiktok.png" alt="TikTok"/></a>
+      <a href="https://wa.me/51987743820 "><img src="whatsapp.png" alt="WhatsApp"/></a>
+    </div>
+    <p>&copy; 2025 Golden Gum. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
